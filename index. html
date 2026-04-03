@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sorry ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #0b3d91;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+    }
+
+    h1 {
+        margin-top: 100px;
+        font-size: 28px;
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 12px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .yes { background: #4CAF50; color: white; }
+    .no { background: #f44336; color: white; position: absolute; }
+    .punish { background: orange; color: white; }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        color: #00bfff;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh); opacity: 1; }
+        100% { transform: translateY(-10vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>
+    Sorry… dil se bol raha hoon ❤️ <br>
+    Tumhare bina sab adhura lagta hai 💖
+</h1>
+
+<div class="buttons">
+    <h3>Maaf kiya ya nahi? 😔</h3>
+    <button class="yes" onclick="alert('I Love You ❤️')">Maaf kar diya ❤️</button>
+    <button class="no" id="noBtn">Nahi 😢</button>
+    <button class="punish" onclick="alert('Punishment accept hai 😅')">Punishment doge?</button>
+</div>
+
+<script>
+    // Move "No" button randomly
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * window.innerWidth - 100;
+        const y = Math.random() * window.innerHeight - 50;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    // Create floating blue hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💙";
+
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
